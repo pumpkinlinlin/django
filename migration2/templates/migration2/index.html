@@ -1,0 +1,10 @@
+{% extends 'migration2/base.html' %}
+{% block title %}首頁{% endblock %}
+{% block content %}
+    {% if request.session.is_login %}
+    <h1>你好!{{request.session.user_name}}，歡迎回來!</h1>
+    {% else %}
+    <h1>未登入，只能瀏覽公開內容</h1>
+    {% endif %}
+
+{% endblock %}

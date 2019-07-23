@@ -1,0 +1,28 @@
+{% extends 'migration2/base.html' %}
+{% block title %}登入{% endblock %}
+{% block content %}
+<!-- 這裡有些class根本是他自己先設好的，我還想說這些class是bootstrap內建的，然後他都全部打完了才講說"喔這我自己先設好的喇"，
+    這教學技術待加強，很多打的東西都不會先講他再幹嘛，這老師應該是看著別的螢幕已經預先打好的再打一遍，
+    等他全打完才知道剛剛30分鐘再幹嘛 -->
+<div class="container">
+    <div class="col-md-4" style="marign-left:auto;margin-right:auto;">
+        <form action="/login/" class="form-login" method="post">
+            {% if message%}
+                <div class="alert alert-warning">{{message}}</div>
+            {% endif %}
+            {% csrf_token %}
+            <div class="form-group">
+                {{ login_form.username.label_tag }}
+                {{ login_form.username }}
+            </div>
+            <div class="form-group">
+                {{ login_form.password.label_tag }}
+                {{ login_form.password }}
+            </div>
+
+            <button type="submit" class="btn btn-primary pull-right">登入</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
